@@ -1,6 +1,6 @@
 # StringsMatcher
 
-Il progetto `StringsMatcher` è una libreria Java per confrontare due stringhe (in particolare, **ragioni sociali**) e determinarne il livello di similarità tramite **quattro algoritmi differenti**. È pensato per aiutare nella deduplicazione, matching fuzzy e normalizzazione di nomi aziendali.
+Il progetto `StringsMatcher` è una libreria Java per confrontare due stringhe (in particolare **ragioni sociali**) e determinarne il livello di similarità tramite **quattro algoritmi differenti**. È pensato per aiutare nella deduplicazione, matching fuzzy e normalizzazione di nomi aziendali.
 
 ## ✨ Funzionalità principali
 
