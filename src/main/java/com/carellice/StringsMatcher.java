@@ -1,4 +1,4 @@
-package org.example;
+package com.carellice;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,17 +14,17 @@ public class StringsMatcher {
     public static final List<String> CHARS_TO_REMOVE = Arrays.asList(".", "&", "-", "'", "!", ",", "(", ")", "*", "%", ":", "+");
 
     /**
-     * Normalizza la ragione sociale. Trim, ToLowerCase, Remove CHARS_TO_REMOVE
-     * @param ragioneSociale Ragione Sociale da normalizzare
-     * @return Ragione Sociale normalizzata
+     * Normalizza la stringa. Trim, ToLowerCase, Remove CHARS_TO_REMOVE
+     * @param string Stringa da normalizzare
+     * @return Stringa normalizzata
      */
-    private static String normalizeRagioneSociale(String ragioneSociale){
-        ragioneSociale = StringUtils.trim(ragioneSociale);
-        ragioneSociale = StringUtils.toRootLowerCase(ragioneSociale);
+    private static String normalizeString(String string){
+        string = StringUtils.trim(string);
+        string = StringUtils.toRootLowerCase(string);
         for (String charToRemove : CHARS_TO_REMOVE) {
-            ragioneSociale = StringUtils.replace(ragioneSociale, charToRemove, "");
+            string = StringUtils.replace(string, charToRemove, "");
         }
-        return ragioneSociale;
+        return string;
     }
 
     /**
@@ -34,8 +34,8 @@ public class StringsMatcher {
      * @return La distanza di Levenshtein
      */
     private static int levenshteinDistance(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         if (s1 == null || s2 == null) {
             return s1 == null && s2 == null ? 0 : (s1 == null ? s2.length() : s1.length());
@@ -74,8 +74,8 @@ public class StringsMatcher {
         return points >= INDEX_LEVENSHTEIN;
     }
     public static double getLevenshteinPoints(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         if (s1 == null || s2 == null) {
             return s1 == null && s2 == null ? 1.0 : 0.0;
@@ -96,8 +96,8 @@ public class StringsMatcher {
      * @return Un valore tra 0 e 1, dove 1 indica stringhe identiche
      */
     private static double jaro(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         if (s1 == null || s2 == null) {
             return s1 == null && s2 == null ? 1.0 : 0.0;
@@ -161,8 +161,8 @@ public class StringsMatcher {
         return points >= INDEX_JARO_WINKLER;
     }
     public static double getJaroWinklerPoints(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         double p = 0.1;
         if (s1 == null || s2 == null) {
@@ -198,8 +198,8 @@ public class StringsMatcher {
         return points <= INDEX_JACCARD;
     }
     public static double getJaccardPoints(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         int n = 2;
         if (s1 == null || s2 == null) {
@@ -250,8 +250,8 @@ public class StringsMatcher {
         return points >= INDEX_DICE;
     }
     public static double getDicePoints(String s1, String s2) {
-        s1 = normalizeRagioneSociale(s1);
-        s2 = normalizeRagioneSociale(s2);
+        s1 = normalizeString(s1);
+        s2 = normalizeString(s2);
 
         int n = 2;
         if (s1 == null || s2 == null) {
